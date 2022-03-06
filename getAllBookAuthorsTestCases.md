@@ -19,7 +19,7 @@ returns ["Layla Jones", "Antony Lee", "Emily White"]
 
 ### Test 2. No authors found
 
-Using custom test data
+Using custom data
 
 #### Testdata
 
@@ -44,7 +44,9 @@ noAuthorLibrary.getAllBookAuthors(testData);
 
 returns []
 
-### Test 3. Author on list only once, with custom data
+### Test 3. Author on list only once
+
+Using custom data
 
 #### testdata
 
@@ -75,31 +77,3 @@ library.getAllBookAuthors();
 ```
 
 returns ["Emily White", "Emil Black" ]
-
-### Test 4. If author is missing throws exceeption
-
-with test data
-[
-{
-"id": 1,
-"name": "Hacking databases",
-"author": "Emily White",
-
-},
-{
-"id": 2,
-"name": "Node and databases",
-"topics": [],
-"price": 30,
-"extras": []
-}
-]
-
-call
-
-```js
-get;
-```
-
-returns exception
-`'Missing parameter'`

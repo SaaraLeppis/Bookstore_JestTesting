@@ -22,39 +22,55 @@ module.exports = class BookStorage {
             if (book.name === name) {
                 listOfIds.push(book.id)
             }
-        } return listOfIds;
+        }
+        return listOfIds;
     }
 
     getAllBookAuthors() { //returns array 
         const authors = [];
         for (let book of this.bookStorage) {
-            if (!authors.includes(book.author)) {
+            if (!authors.includes(book.author) && book.author)
                 authors.push(book.author)
-            }
         }
         return authors;
     }
-    /*  getAllBooksByAuthor(author) {
- 
-     } */
-    /* hasTopics(id) {
 
-    } */
-    /* getBookTopics(id) {
+    getAllBooksByAuthor(author) {
+        if (!author) throw new Error('Missing parameter');
+        const books = [];
+        for (let book of this.bookStorage) {
+            if (book.author === author) {
+                books.push(book);
+            }
+        }
+        return books;
+    }
 
-    } */
-    /*     getPriceWithoutExtras(id) {
-    
-        } */
-    /*  getTotalPrice(id) {
- 
-     } */
-    /*  getPriceofTheExtras(id) {
- 
-     } */
-
-
+    hasTopics(id) {
+        if (!id) return false;
+        for (let book of this.bookStorage) {
+            if (book.id === id && book.topics.length > 0) {
+                return true;
+            }
+        }
+        return false;
+    };
 }
+/* getBookTopics(id) {
+
+} */
+/*     getPriceWithoutExtras(id) {
+ 
+    } */
+/*  getTotalPrice(id) {
+ 
+ } */
+/*  getPriceofTheExtras(id) {
+ 
+ } */
+
+
+
 
 
 

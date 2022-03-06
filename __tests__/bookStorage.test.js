@@ -3,14 +3,14 @@
 const BookStorage = require('../bookStorage');
 const books = require('../datastorage.json');
 
-describe('Testing constructor', () => {
+describe('1/Testing constructor', () => {
     test('Test 1: missing paramater, throws an exception', () => {
         expect(() => new BookStorage()).toThrow('data storage missing');
 
     })
 })
 
-describe('Testing method getById', () => {
+describe('2/Testing method getById', () => {
     const library = new BookStorage(books);
 
     test('Test 1: get the book with id "2"', () => {
@@ -27,6 +27,7 @@ describe('Testing method getById', () => {
             expect(library.getById(id)).toEqual(expectedValue);
         });
     });
+
     test('Test 3: wrong id', () => {
         expect(library.getById(10)).toBeNull()
     });
@@ -39,7 +40,7 @@ describe('Testing method getById', () => {
         expect(library.getById("313")).toBeNull();
     });
 })
-describe('Testing method getAllIdsByName', () => {
+describe('3/Testing method getAllIdsByName', () => {
     const library = new BookStorage(books);
     test('Test 1: get id with the name "Hacking databases"', () => {
         expect(library.getAllIdsByName("Hacking databases")).toEqual([3]);
@@ -52,10 +53,10 @@ describe('Testing method getAllIdsByName', () => {
     });
 });
 
-describe('Testing method getAllBookAuthors()', () => {
+describe('4/Testing method getAllBookAuthors', () => {
     const library = new BookStorage(books);
     test('Test 1: Get authors from datastorage', () => {
-        expect(library.getAaaBookAuthors()).toEqual(["Layla Jones", "Antony Lee", "Emily White"]);
+        expect(library.getAllBookAuthors()).toEqual(["Layla Jones", "Antony Lee", "Emily White"]);
     })
     // does it mean that there is data without author?  
     test('Test 2: No authors found ', () => {
@@ -70,11 +71,11 @@ describe('Testing method getAllBookAuthors()', () => {
             }
         ];
         const noAuthorLibrary = new BookStorage(testData);
-        expect(noAuthorLibrary.getAllBookAuthors().toEqual([]));
+        expect(noAuthorLibrary.getAllBookAuthors()).toEqual([]);
 
 
     })
-    test('Test 3: Author on list only once, with custom data', () => {
+    test('Test 3: Author on list only once', () => {
         const testData = [
             {
                 "id": 1,
@@ -96,4 +97,63 @@ describe('Testing method getAllBookAuthors()', () => {
             library = new BookStorage(testData);
         expect(library.getAllBookAuthors()).toEqual(["Emily White", "Emil Black"])
     })
+
+})
+describe('5/Testing method getAllBooksByAuthor', () => {
+    const library = new BookStorage(books);
+    test('Test 1: Get result with author "Antony Lee"', () => {
+        expect(library.getAllBooksByAuthor("Antony Lee")).toEqual([books[1]]);
+    })
+
+    test('Test 2: If no match', () => {
+        expect(library.getAllBooksByAuthor("Leila Hökki")).toEqual
+            ([]);
+    });
+    test('Test 3: If parameter missing', () => {
+        expect(() => library.getAllBooksByAuthor()).toThrow("Missing parameter");
+    });
+    test('Test 4: If author has more than one book', () => {
+
+        const testValues = [
+            {
+                "id": 1,
+                name: "NoSql - New Hope",
+                author: "Layla Jones"
+            },
+            {
+                "id": 2,
+                name: "Databases - The rise and fall",
+                author: "Antony Lee"
+            },
+            {
+                "id": 3,
+                name: "Hacking databases",
+                author: "Antony Lee"
+            },
+        ];
+        const library = new BookStorage(testValues);
+        expect(library.getAllBooksByAuthor("Antony Lee")).toEqual([testValues[1], testValues[2]]);
+    });
+})
+
+describe('6/Testing method hasTopics', () => {
+    const library = new BookStorage(books);
+
+    describe('Test 1: Returns true if has topics', () => {
+        const testValues = [
+            [1, true],
+            [2, true]
+        ];
+        test.each(testValues)('id %s returns %p', (id, expectedValue) => {
+            expect(library.hasTopics(id)).toEqual(expectedValue);
+        });
+    });
+
+    test('Test 2: Returns false if book has no topics', () => {
+        expect(library.hasTopics(3)).toBe(false);
+    });
+
+    test('Test 3: Returns false if parameter missing', () => {
+        expect(library.hasTopics()).toEqual(false);
+    });
 })
