@@ -23,12 +23,12 @@ Using custom test data
 
 #### Testdata
 
-````json
+```json
 [
   {
-    "id":1,
+    "id": 1,
     "name": "Hacking databases",
-    "author":"",
+    "author": "",
     "topics": [],
     "price": 30,
     "extras": []
@@ -44,7 +44,7 @@ noAuthorLibrary.getAllBookAuthors(testData);
 
 returns []
 
-### Test 3. If author in data many times, with custom data
+### Test 3. Author on list only once, with custom data
 
 #### testdata
 
@@ -53,26 +53,17 @@ returns []
   {
     "id": 1,
     "name": "Hacking databases",
-    "author": "Emily White",
-    "topics": [],
-    "price": 30,
-    "extras": []
+    "author": "Emily White"
   },
   {
     "id": 2,
     "name": "Node and databases",
-    "author": "Emily White",
-    "topics": [],
-    "price": 10,
-    "extras": []
+    "author": "Emily White"
   },
   {
     "id": 3,
     "name": "Hack of the year",
-    "author": "Emil White",
-    "topics": [],
-    "price": 5,
-    "extras": []
+    "author": "Emil black"
   }
 ]
 ```
@@ -80,8 +71,35 @@ returns []
 call
 
 ```js
-library.getAllIdsByName();
+library.getAllBookAuthors();
 ```
 
-returns []
-````
+returns ["Emily White", "Emil Black" ]
+
+### Test 4. If author is missing throws exceeption
+
+with test data
+[
+{
+"id": 1,
+"name": "Hacking databases",
+"author": "Emily White",
+
+},
+{
+"id": 2,
+"name": "Node and databases",
+"topics": [],
+"price": 30,
+"extras": []
+}
+]
+
+call
+
+```js
+get;
+```
+
+returns exception
+`'Missing parameter'`

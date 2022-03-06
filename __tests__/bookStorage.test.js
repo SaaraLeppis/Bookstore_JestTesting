@@ -52,7 +52,7 @@ describe('Testing method getAllIdsByName', () => {
     });
 });
 
-describe('Teting method getAllBookAuthors()', () => {
+describe('Testing method getAllBookAuthors()', () => {
     const library = new BookStorage(books);
     test('Test 1: Get authors from datastorage', () => {
         expect(library.getAaaBookAuthors()).toEqual(["Layla Jones", "Antony Lee", "Emily White"]);
@@ -70,9 +70,30 @@ describe('Teting method getAllBookAuthors()', () => {
             }
         ];
         const noAuthorLibrary = new BookStorage(testData);
-        excpect(noAuthorLibrary.getAllBookAuthors().toEqual([]));
+        expect(noAuthorLibrary.getAllBookAuthors().toEqual([]));
 
 
     })
-    test('Test 3: ')
+    test('Test 3: Author on list only once, with custom data', () => {
+        const testData = [
+            {
+                "id": 1,
+                "name": "Hacking databases",
+                "author": "Emily White"
+            },
+            {
+                "id": 2,
+                "name": "Node and databases",
+                "author": "Emily White"
+            },
+            {
+                "id": 3,
+                "name": "Hack of the year",
+                "author": "Emil Black"
+            }
+        ]
+        const
+            library = new BookStorage(testData);
+        expect(library.getAllBookAuthors()).toEqual(["Emily White", "Emil Black"])
+    })
 })
