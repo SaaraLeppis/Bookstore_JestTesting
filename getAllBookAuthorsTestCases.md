@@ -1,6 +1,6 @@
 # Test cases
 
-### **getAllBookAuthors()**
+## **getAllBookAuthors()**
 
 Returns an array of different book authors. Method does not receive any parameters.
 

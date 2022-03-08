@@ -4,7 +4,7 @@ const BookStorage = require('../bookStorage');
 const books = require('../datastorage.json');
 
 describe('1/Testing constructor', () => {
-    test('Test 1: missing paramater, throws an exception', () => {
+    test('Test 1: missing paramater, throws an error', () => {
         expect(() => new BookStorage()).toThrow('data storage missing');
 
     })
@@ -117,18 +117,18 @@ describe('5/Testing method getAllBooksByAuthor', () => {
         const testValues = [
             {
                 "id": 1,
-                name: "NoSql - New Hope",
-                author: "Layla Jones"
+                "name": "NoSql - New Hope",
+                "author": "Layla Jones"
             },
             {
                 "id": 2,
-                name: "Databases - The rise and fall",
-                author: "Antony Lee"
+                "name": "Databases - The rise and fall",
+                "author": "Antony Lee"
             },
             {
                 "id": 3,
-                name: "Hacking databases",
-                author: "Antony Lee"
+                "name": "Hacking databases",
+                "author": "Antony Lee"
             },
         ];
         const library = new BookStorage(testValues);
@@ -145,7 +145,7 @@ describe('6/Testing method hasTopics', () => {
             [2, true]
         ];
         test.each(testValues)('id %s returns %p', (id, expectedValue) => {
-            expect(library.hasTopics(id)).toEqual(expectedValue);
+            expect(library.hasTopics(id)).toBe(expectedValue);
         });
     });
 
@@ -154,6 +154,95 @@ describe('6/Testing method hasTopics', () => {
     });
 
     test('Test 3: Returns false if parameter missing', () => {
-        expect(library.hasTopics()).toEqual(false);
+        expect(library.hasTopics()).toBe(false);
     });
+})
+describe('7/Testing method getBookTopics', () => {
+    const library = new BookStorage(books);
+
+    describe("Test 1: Returns array of test data's topics", () => {
+        const testValues = [
+            [1, books[0].topics],
+            [2, books[1].topics]
+        ];
+        test.each(testValues)('id %s returns %p', (id, expectedValue) => {
+            expect(library.getBookTopics(id)).toEqual(expectedValue);
+        });
+    });
+    test("Test 2: Returns empty array if no topics", () => {
+        expect(library.getBookTopics(3)).toEqual([]);
+
+    });
+    test("Test 3: Throws and error if parameter is missing", () => {
+        expect(() => library.getBookTopics()).toThrow('Parameter missing');
+    });
+})
+describe('8/testing method getPriceWithoutExtras', () => {
+    const library = new BookStorage(books);
+    test('Test 1.: If parameter missing', () => {
+        expect(() => library.getPriceWithoutExtras()).toThrow('Parameter missing');
+    });
+    describe('Test 2.: Test that returns correct price', () => {
+        const testValues = [
+            [1, books[0].price],
+            [2, books[1].price],
+            [3, books[2].price]
+        ]
+        test.each(testValues)('id %s returns %p', (id, expectedValue) => {
+            expect(library.getPriceWithoutExtras(id)).toBe(expectedValue)
+        });
+    });
+    test('Test 3.: If no book with given id', () => {
+        expect(() => library.getPriceWithoutExtras(22)).toThrow('nothing found with given id')
+    })
+    test('Test 4.: If price is missing', () => {
+        const testData = [
+            {
+                "id": 2,
+                "name": "Databases - The rise and fall",
+                "author": "Antony Lee",
+                "topics": [],
+                "extras": []
+            }
+        ]
+        const noPriceLibrary = new BookStorage(testData);
+        expect(() => noPriceLibrary.getPriceWithoutExtras(2)).toThrow('Price is missing');
+    })
+
+})
+describe('9/ Testing method getTotalPrice', () => {
+    const library = new BookStorage(books);
+
+    describe('Test 1: Correct values from test data', () => {
+        const testValues = [
+            [1, 70],
+            [2, 190],
+            [3, 30]
+        ]
+        test.each(testValues)('id %s returns %p', (id, expectedValue) => {
+            expect(library.getTotalPrice(id)).toBe(expectedValue)
+        });
+    });
+    test('Test 2: No book with given id', () => {
+        expect(() => library.getTotalPrice(313)).toThrow('nothing found with given id');
+    })
+
+})
+describe('10/ Testing method getPriceOfTheExtras', () => {
+    const library = new BookStorage(books);
+
+    describe('Test 1: Correct values from test data', () => {
+        const testValues = [
+            [1, 45],
+            [2, 145],
+            [3, 0]
+        ]
+        test.each(testValues)('id %s returns %p', (id, expectedValue) => {
+            expect(library.getPriceOfTheExtras(id)).toBe(expectedValue)
+        });
+    });
+    test('Test 2: No book with given id', () => {
+        expect(() => library.getPriceOfTheExtras(131)).toThrow('nothing found with given id');
+    })
+
 })

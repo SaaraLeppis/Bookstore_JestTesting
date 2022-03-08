@@ -105,14 +105,6 @@ Returns an array of book topics. If none found, returns an empty array.
 - Parameters: id of the book
 - Return: returns topics as an array
 
-### **getPriceWithoutExtras(id)**
-
-Returns the price with out extras
-
-- Parameters: id of the book
-- Return: The price of the book not including the price of the extras
-- if no book with the given number is found throws an exeption `nothing found with given id`
-
 ### **getTotalPrice(id)**
 
 Returns the total price of the book including the total price of the extras

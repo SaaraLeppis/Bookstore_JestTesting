@@ -55,22 +55,49 @@ module.exports = class BookStorage {
         }
         return false;
     };
+
+    getBookTopics(id) {
+        if (!id) throw new Error('Parameter missing');
+        for (let book of this.bookStorage) {
+            if (book.id === id && book.topics && book.topics.length > 0) {
+                return book.topics
+            }
+        }
+        return [];
+    }
+
+    getPriceWithoutExtras(id) {
+        if (!id) throw ('Parameter missing');
+
+        for (let book of this.bookStorage) {
+            if (book.id === id && book.price) {
+                return book.price
+            } else if (book.id === id && !book.price) {
+                throw ('Price is missing')
+            }
+        } throw new Error('nothing found with given id');
+    }
+    getTotalPrice(id) {
+        let total = 0;
+        for (let book of this.bookStorage) {
+            if (book.id === id) {
+                total += book.price;
+                for (let extra of book.extras) {
+                    total += extra.price;
+                };
+                return total;
+            }
+        } throw new Error('nothing found with given id');
+    }
+    getPriceOfTheExtras(id) {
+        for (let book of this.bookStorage) {
+            let extras = 0;
+            if (book.id === id) {
+                for (let extra of book.extras) {
+                    extras += extra.price;
+                };
+                return extras;
+            }
+        } throw new Error('nothing found with given id');
+    }
 }
-/* getBookTopics(id) {
-
-} */
-/*     getPriceWithoutExtras(id) {
- 
-    } */
-/*  getTotalPrice(id) {
- 
- } */
-/*  getPriceofTheExtras(id) {
- 
- } */
-
-
-
-
-
-
