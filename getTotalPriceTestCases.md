@@ -2,10 +2,10 @@
 
 ## **getTotalPrice(id)**
 
-Returns the total price of the book of given id. Price includes the total price of the extras.
+Returns the total price of the book of given id. Price includes price and price of the extras.
 If no book with the given number is found throws an exeption `nothing found with given id`
 
-### Test 1: Correct values from test data
+### Test 1: Total price from default data
 
 call
 

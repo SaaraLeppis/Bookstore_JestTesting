@@ -1,14 +1,29 @@
-##**GetBookTopics(id)**
+# Test cases
 
-Returns an array of book topics. If none found, returns an empty array.
+## **getBookTopics(id)**
 
-- Parameters: id of the book
-- Return: returns topics as an array
+Returns an array of book topics of given id. If none found, returns an empty array.
 
-## Test1: Returns array of test data's topics
+## Test1: Topics from default data
 
-## Test 2: Returns empty array if no topics
+call
 
-## Test 3: throws an error if paramter missing
+```js
+library.getBookTopics(1);
+```
 
-`'Parameter missing'`
+returns
+
+```js
+["noSql", "sql", "future databases"];
+```
+
+## Test 2: No topics
+
+call
+
+```js
+library.getBookTopics(1);
+```
+
+returns `[]`

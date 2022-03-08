@@ -7,7 +7,7 @@ module.exports = class BookStorage {
     }
 
     getById(id) {
-        if (!id) throw new Error('Parameter missing');
+        if (!id) throw new Error('parameter missing');
         for (let book of this.bookStorage) {
             if (book.id === id) {
                 return book;
@@ -26,7 +26,7 @@ module.exports = class BookStorage {
         return listOfIds;
     }
 
-    getAllBookAuthors() { //returns array 
+    getAllBookAuthors() {
         const authors = [];
         for (let book of this.bookStorage) {
             if (!authors.includes(book.author) && book.author)
@@ -36,7 +36,7 @@ module.exports = class BookStorage {
     }
 
     getAllBooksByAuthor(author) {
-        if (!author) throw new Error('Missing parameter');
+        if (!author) throw new Error('missing parameter');
         const books = [];
         for (let book of this.bookStorage) {
             if (book.author === author) {
@@ -57,7 +57,7 @@ module.exports = class BookStorage {
     };
 
     getBookTopics(id) {
-        if (!id) throw new Error('Parameter missing');
+        if (!id) throw new Error('parameter missing');
         for (let book of this.bookStorage) {
             if (book.id === id && book.topics && book.topics.length > 0) {
                 return book.topics
@@ -67,13 +67,11 @@ module.exports = class BookStorage {
     }
 
     getPriceWithoutExtras(id) {
-        if (!id) throw ('Parameter missing');
+        if (!id) throw ('parameter missing');
 
         for (let book of this.bookStorage) {
             if (book.id === id && book.price) {
                 return book.price
-            } else if (book.id === id && !book.price) {
-                throw ('Price is missing')
             }
         } throw new Error('nothing found with given id');
     }

@@ -2,11 +2,11 @@
 
 ## **getAllBooksByAuthor(author)**
 
-Returns an array of book objects of given author. Return type is an array ('[]').
+Returns an array of book objects of given author. Return type is an array (`[]`).
 If there is no match an empty array is returned.
-If parameter is missing, throws an exception `'Missing parameter'`
+If parameter is missing, throws an exception `'missing parameter'`
 
-## Test 1: Get result with author "Antony Lee"
+## Test 1: Get result with author
 
 ```js
 library.getAllBooksByAuthor("Antony Lee");
@@ -18,7 +18,7 @@ returns
 library[1];
 ```
 
-## Test 2. If no match
+## Test 2: No match with given id
 
 call
 
@@ -26,20 +26,20 @@ call
 library.getAllBooksByAuthor("Leila Hökki");
 ```
 
-returns []
+returns `[]`
 
-## Test 3. If parameter missing throws exception
+## Test 3: Parameter missing
 
 call
 
 ```js
-library.getAllBooksByAuthor("Leila Hökki");
+library.getAllBooksByAuthor();
+```
 
 returns exception
-`'Missing parameter'`
-```
+`'missing parameter'`
 
-## Test 4: If author has more than one book
+## Test 4: Author has more than one book
 
 From custom data
 

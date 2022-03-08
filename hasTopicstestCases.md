@@ -2,14 +2,38 @@
 
 ## **hasTopics(id)**
 
-Returns true if book has topics,  
-else returns false.
+Returns true if book with given id has topics, else returns false.
 If parameter is missing, returns false.
 
-## Test 1: Returns true if book has topics
+## Test 1: Book has topics
 
 call
 
-## Test 2: Returns false if book has no topics
+```js
+library.hasTopics(2);
+```
 
-## Test 3: Retuns false if parameter is missing
+returns
+`true`
+
+## Test 2: Book has no topics
+
+call
+
+```js
+library.hasTopics(2);
+```
+
+returns
+`false`
+
+## Test 3: Parameter is missing
+
+call
+
+```js
+library.hasTopics();
+```
+
+returns
+`false`

@@ -6,7 +6,7 @@ Returns the total price of extras bunled with the book with given id.
 If no extras is found returns 0.
 If no book with the given number is found throws an exeption `nothing found with given id`
 
-### Test 1: Correct values from test data
+### Test 1: Correct values from default data
 
 if no extras (id:3): `0`is returned
 
@@ -29,5 +29,5 @@ call
 libabry.getTotalPrice(131);
 ```
 
-throws  
+throws exception
 `'nothing found with given id'`

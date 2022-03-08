@@ -7,7 +7,7 @@ Returns an array of different book authors. Method does not receive any paramete
 - If no authors are found, returns an empty array
 - Author is added to the result array only once
 
-### Test 1: get authors from testdata '`datastorage.json`'
+### Test 1: Get authors from default data' `datastorage.json`
 
 call
 
@@ -15,11 +15,15 @@ call
 library.getAllBookAuthors();
 ```
 
-returns ["Layla Jones", "Antony Lee", "Emily White"]
+returns
+
+```js
+["Layla Jones", "Antony Lee", "Emily White"];
+```
 
 ### Test 2. No authors found
 
-Using custom data
+Using custom testdata
 
 #### Testdata
 
@@ -42,11 +46,11 @@ call
 noAuthorLibrary.getAllBookAuthors(testData);
 ```
 
-returns []
+returns `[]`
 
 ### Test 3. Author on list only once
 
-Using custom data
+Using custom testdata
 
 #### testdata
 
@@ -76,4 +80,8 @@ call
 library.getAllBookAuthors();
 ```
 
-returns ["Emily White", "Emil Black" ]
+returns
+
+```js
+["Emily White", "Emil Black"];
+```

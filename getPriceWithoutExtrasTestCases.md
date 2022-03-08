@@ -2,10 +2,25 @@
 
 ## **getPriceWithoutExtras(id)**
 
-Returns the price of book with out extras. Parameter is id, and if it misses throws an exception '`nothing found with given id`
+Returns the price of book with given id with out extras. Parameter is id, and if it misses throws an exception '`nothing found with given id`
 
-### Test that returns total price
+### Test 1: Price from default data
 
-## If no book with given id, throws 'nothing found with given id'
+call
 
-## If no price, throws 'no price with given id'
+```js
+library.getPriceWithoutExtra(3);
+```
+
+returns `30`
+
+## Test 2: No book with given id
+
+call
+
+```js
+library.getPriceWithoutExtra(222);
+```
+
+throws exception
+`'nothing found with given id'`

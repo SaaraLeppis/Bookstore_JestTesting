@@ -2,10 +2,10 @@
 
 ## **getAllIdsByName(value)**
 
-Returns all book **ids** of the books matching the value of name. Return type is an array ('[]').
+Returns all book **ids** of the books matching the value of name. Return type is an array (`[]`).
 If there is no match or parameter is missing, an empty array is returned.
 
-### Test 1: get the id with name "Hacking databases"
+### Test 1: Get the id with existing name
 
 call
 
@@ -13,9 +13,9 @@ call
 library.getAllIdsByName("Hacking databases");
 ```
 
-returns [3]
+returns `[3]`
 
-### Test 2. No match
+### Test 2: No match
 
 call
 
@@ -23,9 +23,9 @@ call
 library.getAllIdsByName("How to fall in love with JavaScript");
 ```
 
-returns []
+returns `[]`
 
-### Test 3. parameter is missing
+### Test 3: Parameter missing
 
 call
 
@@ -33,4 +33,4 @@ call
 library.getAllIdsByName();
 ```
 
-returns []
+returns `[]`
