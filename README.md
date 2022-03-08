@@ -58,3 +58,7 @@ describe("Test 1: Correct values from default data", () => {
 ## What I learned
 
 To make basic testing functions.
+
+## screenshot of run tests
+
+![all tests passed](./assets/Screenshot_tests.png)
