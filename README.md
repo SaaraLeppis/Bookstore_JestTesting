@@ -6,7 +6,8 @@ This is Unit Testing-course's end assignment @ `Helsinki Business College` using
 
 Using `Test Driven Development`:
 
-- create first tests,
+- design test cases to separate .md -files
+- create tests,
 - check that all are failing (to know that they are not going through without aything to test),
 - create implementation, check that tests pass - if not good luck to look for mistakes and specially typos...
 
@@ -15,6 +16,15 @@ Using `Test Driven Development`:
 ```shell
 npm init -y
 npm install jest --save-dev
+```
+
+- create folder **tests** for tests
+- edit script in **package.json**:
+
+```js
+ "scripts": {
+    "test": "jest"
+  },
 ```
 
 ### to run tests
